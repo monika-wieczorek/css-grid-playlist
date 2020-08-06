@@ -12,57 +12,98 @@
 			display: grid;
 			/*grid-template-columns: 30% 20% 50%;*/
 			/*grid-template-columns: 1fr 2fr 1fr;*/
-			grid-template-columns: repeat(3, 1fr);
+			grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(100px, auto);
             grid-gap: 10px;
-			max-width: 960px;
+            max-width: 960px;
 			margin: 0 auto;
+            position: relative;
 		}
-		#content div{
-			background: #3bbced;
-			padding: 30px;
-		}
-		#content div:nth-child(even){
-			background: #777;
-			padding: 30px;
-		}
-
-        .nested
+		#content > *
         {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 10px;
-            grid-column: 1/3;
+            background: #3bbced;
+            padding: 30px;
         }
 
-        .nested p
+        header
+        {
+            grid-column: 1/13;
+        }
+
+        main
+        {
+            grid-column: 4/13;
+            grid-row: 2/4;
+        }
+
+        section
+        {
+            grid-column: 1/13;
+            grid-row: 4/6;
+        }
+
+        aside
+        {
+            grid-column: 1/4;
+            grid-row: 2/3;
+        }
+
+        nav
+        {
+            grid-column: 1/4;   
+        }
+
+        footer
+        {
+            grid-column: 1/13;
+        }
+
+        #grid
+        {
+            display: grid;
+            position: absolute;
+            top: 0;
+            left: 0;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: minmax(100%, auto);
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            padding: 0;
+            display: none;
+        }
+
+        #grid p
         {
             border: 1px solid #fff;
             margin: 0;
-            padding: 20px;
+            opacity: 0.2;
+        }
+        
+        input:checked + #content #grid
+        {
+            display: grid;
         }
 
 	</style>
 </head>
 <body>
 
+    <input type="checkbox"/>
+
 	<div id="content">
 
-		<div>1</div>
-		<div>2</div>
-		<div>3</div>
-		<div class="nested">
-            <p>1</p>
-            <p>2</p>
-            <p>3</p>
-            <p>4</p>
+        <div id="grid">
+            <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
         </div>
-		<div>5</div>
-		<div>6</div>
-		<div>7</div>
-		<div>8</div>
-		<div>9</div>
+
+        <header>Header</header>
+        <main>Main</main>
+        <section>Section</section>
+        <aside>Aside</aside>
+        <nav>Nav</nav>
+        <footer>Footer</footer>
 
 	</div>
-
 </body>
 </html>
